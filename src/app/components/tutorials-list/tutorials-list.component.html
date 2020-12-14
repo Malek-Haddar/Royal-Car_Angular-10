@@ -1,0 +1,71 @@
+<div class="list row">
+  <div class="col-md-8">
+    <div class="input-group mb-3">
+      <select type="text" class="form-control" placeholder="Search by class" [(ngModel)]="class">
+        <option value="">-Select Class-</option>
+        <option value="Premium">Premium</option>
+        <option value="Off-Road">Off-Road</option>
+        <option value="Luxyrious">Luxyrious</option>
+        <option value="SuperCar">SuperCar</option>
+        <option value="Other">Other</option>
+
+      </select>
+      <div class="input-group-append">
+        <button class="btn btn-outline-secondary" type="button" (click)="searchClass()">
+          Search
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-md-6">
+    <h4>Car List</h4>
+    <ul class="list-group">
+      <li class="list-group-item" *ngFor="let tutorial of tutorials; let i = index" [class.active]="i == currentIndex"
+        (click)="setActiveTutorial(tutorial, i)">
+        {{ tutorial.class }}
+      </li>
+    </ul>
+
+    <button class="m-3 btn btn-sm btn-danger" (click)="removeAllTutorials()"><i class="fa fa-trash fa-lg"></i>
+      Remove All
+    </button>
+  </div>
+  <div class="col-md-6">
+    <div *ngIf="currentTutorial">
+      <h4>RoyalCars</h4>
+      <div>
+        <label><strong>Class:</strong></label> {{ currentTutorial.class }}
+      </div>
+      <div>
+        <label><strong>Air Condition:</strong></label>
+        {{ currentTutorial.air }}
+      </div>
+      <div>
+        <label><strong>Body Style:</strong></label>
+        {{ currentTutorial.body }}
+      </div>
+      <div>
+        <label><strong>Transmission:</strong></label>
+        {{ currentTutorial.transmission }}
+      </div>
+      <div>
+        <label><strong>Image</strong></label><br>
+        <img [src]="currentTutorial.image" style="height: 100px; width:100px">
+      </div>
+      <div>
+        <label><strong>Status:</strong></label>
+        {{ currentTutorial.published ? "Published" : "Pending" }}
+      </div>
+
+      <a class="btn btn-warning" routerLink="/tutorials/{{ currentTutorial.id }}"><i class="fa fa-pencil"></i>
+        Edit
+      </a>
+    </div>
+
+    <div *ngIf="!currentTutorial">
+      <br />
+      <p>Please click on a Class ...</p>
+    </div>
+  </div>
+</div>

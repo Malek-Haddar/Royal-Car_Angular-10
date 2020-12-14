@@ -1,0 +1,81 @@
+<div style="width: 400px; margin: auto;">
+  <div *ngIf="currentTutorial" class="edit-form">
+    <h4>RoalCar Details</h4>
+    <form>
+      <div class="form-group">
+        <label for="class">Class</label>
+        <select type="text" class="form-control" id="class" required [(ngModel)]="currentTutorial.class" name="class">
+          <option value="">-Select-</option>
+          <option value="Premium">Premium</option>
+          <option value="Off-Road">Off-Road</option>
+          <option value="Luxyrious">Luxyrious</option>
+          <option value="SuperCar">SuperCar</option>
+          <option value="Other">Other</option>
+
+
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="air">Air Condition</label>
+        <select class="form-control" id="air" required [(ngModel)]="currentTutorial.air" name="air">
+          <option value="">-Select-</option>
+          <option value="Yes">Yes</option>
+          <option value="No">No</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="body">Body Style</label>
+        <select class="form-control" id="body" required [(ngModel)]="currentTutorial.body" name="body">
+          <option value="">-Select-</option>
+          <option value="Sedan">Sedan</option>
+          <option value="Coupe">Coupe</option>
+          <option value="Sports Car">Sports Car</option>
+          <option value="Hatchback">Hatchback</option>
+          <option value="Other">Other</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="transmission">Transmission</label>
+        <select class="form-control" id="transmission" required [(ngModel)]="currentTutorial.transmission"
+          name="transmission">
+          <option value="">-Select-</option>
+          <option value="Automatic">Automatic</option>
+          <option value="Manual">Manual</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="image">Image</label>
+        <input type="text" class="form-control" id="image" [(ngModel)]="currentTutorial.image" name="image" />
+
+      </div>
+
+      <div class="form-group">
+        <label><strong>Status:</strong></label>
+        {{ currentTutorial.published ? "Published" : "Pending" }}
+      </div>
+    </form>
+
+    <button class="btn btn-sm btn-success text-white ml-1" *ngIf="currentTutorial.published"
+      (click)="updatePublished(false)"><i class="fa fa-square-o"></i>
+      UnPublish
+    </button>
+    <button *ngIf="!currentTutorial.published" class="btn btn-sm btn-success text-white ml-1"
+      (click)="updatePublished(true)"><i class="fa fa-check-square"></i>
+      Publish
+    </button>
+
+    <button class="btn btn-sm btn-danger text-white ml-1" (click)="deleteTutorial()"><i class="fa fa-trash"></i>
+      Delete
+    </button>
+
+    <button class="btn btn-sm btn-info text-white" (click)="updateTutorial()"><i class="fa fa-spinner"></i>
+      Update
+    </button>
+    <p>{{ message }}</p>
+  </div>
+
+  <div *ngIf="!currentTutorial">
+    <br />
+    <p>Cannot access this Car...</p>
+  </div>
+</div>

@@ -1,0 +1,15 @@
+<div class="rq-contact-us-form-content">
+  <!-- start message form -->
+
+  <form action="#">
+    <input type="name" class="contact-form-input" placeholder="Your name" [(ngModel)]="name"
+      [ngModelOptions]="{standalone: true}">
+    <input type="email" class="contact-form-input" placeholder="Your email" [(ngModel)]="email"
+      [ngModelOptions]="{standalone: true}">
+    <input type="text" class="contact-form-input" placeholder="Subject">
+    <textarea class="contact-form-input" placeholder="Message"></textarea>
+    <div class="submit-btn">
+      <button type="submit" class="rq-btn rq-btn-primary" (click)="sendNotif()">Send Message</button>
+    </div>
+  </form>
+</div> <!-- end message form -->
