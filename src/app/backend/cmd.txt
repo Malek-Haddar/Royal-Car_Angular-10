@@ -1,3 +1,5 @@
+Fichier des commandes :
+
 json-server --watch backend\db.json
 ng serve --open
 ng g c
