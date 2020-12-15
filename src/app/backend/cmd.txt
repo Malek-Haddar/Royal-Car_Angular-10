@@ -1,2 +1,4 @@
 json-server --watch backend\db.json
 ng serve --open
+ng g c
+ng g s
